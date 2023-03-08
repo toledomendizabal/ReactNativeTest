@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native"
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { useState } from "react"
 import newsApi from "../constants/newsApi"
+import moment from "moment"
 
 
 const height = Dimensions.get('screen').height
@@ -36,7 +37,7 @@ const NewDetailItem = ({ detail: { author, title, description, urlToImage, publi
                     <View style={{ backgroundColor: "#ffffffa6" }}>
                         <Text style={stiles.title}>{title}</Text>
                         <View style={stiles.containerSecondary}>
-                            <Text style={stiles.publishedAt}>{publishedAt}</Text>
+                            <Text style={stiles.publishedAt}>{moment(publishedAt).format('MM/DD/YYYY')}</Text>
                             <Text style={stiles.author}>{author}</Text>
                         </View>
                     </View>
@@ -52,7 +53,7 @@ const stiles = StyleSheet.create({
     container: {
         justifyContent: "center",
         marginVertical: 10,
-        marginHorizontal: 10
+        marginHorizontal: 10,
     },
     backButton: {
         padding: 10,
@@ -64,7 +65,7 @@ const stiles = StyleSheet.create({
     image: {
         justifyContent: 'flex-end',
         marginBottom: 20,
-        height: height / 2
+        height: height / 2,
     },
     containerSecondary: {
         flexDirection: "row",
